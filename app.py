@@ -19,9 +19,10 @@ if st.button("Test Database Connection"):
         cur.close()
         conn.close()
 
-        st.success(f" 👍 Database connected successfully. Result: {result}")
+        st.success(f" 👍 Database connected successfully. ✅")
 
     except Exception as e:
         st.error("❌ Database connection failed")
         st.exception(e)
+
 
