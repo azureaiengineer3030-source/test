@@ -14,3 +14,4 @@ def get_db_connection():
         port=Settings.DB_PORT,
         sslmode="require"
     )
+
