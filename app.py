@@ -1,13 +1,26 @@
-# app.py
-
+import streamlit as st
 from db.connection import get_db_connection
 
-def main():
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT version()")
-    print("Database connected:")
-    print(cur.fetchone())
+st.set_page_config(page_title="DB Connectivity Test", layout="centered")
 
-if __name__ == "__main__":
-    main()
+st.title("🔌 Database Connectivity Test")
+
+st.write("This page verifies whether the Streamlit app can connect to the database using GitHub config.")
+
+# Button to test DB connection
+if st.button("Test Database Connection"):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        cur.execute("SELECT 1")
+        result = cur.fetchone()
+
+        cur.close()
+        conn.close()
+
+        st.success(f"✅ Database connected successfully. Result: {result}")
+
+    except Exception as e:
+        st.error("❌ Database connection failed")
+        st.exception(e)
