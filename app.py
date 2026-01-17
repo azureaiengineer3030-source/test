@@ -5,7 +5,7 @@ st.set_page_config(page_title="DB Connectivity Test", layout="centered")
 
 st.title("🔌 Database Connectivity Test")
 
-st.write("This page verifies whether the Streamlit app can connect to the database using GitHub config.")
+st.write("👍 This page verifies whether the Streamlit app can connect to the database using GitHub config.")
 
 # Button to test DB connection
 if st.button("Test Database Connection"):
@@ -19,10 +19,11 @@ if st.button("Test Database Connection"):
         cur.close()
         conn.close()
 
-        st.success(f" 👍 Database connected successfully. ✅")
+        st.success(f" Database connected successfully ✅ ")
 
     except Exception as e:
-        st.error("❌ Database connection failed")
+        st.error("Database connection failed ❌ ")
         st.exception(e)
+
 
 
